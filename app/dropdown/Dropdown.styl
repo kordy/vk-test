@@ -1,0 +1,148 @@
+@import '../vars.styl';
+
+.dropdown
+  background $backgroundColor
+  border 1px solid $borderColor
+  border-radius 2px
+  padding 2px 2px 1px
+  position relative
+  width 340px
+  outline none
+  &--open
+    z-index 5
+
+  &__input
+    width 100%
+    border none
+    outline none
+    padding 1px 4px
+    box-sizing border-box
+
+  &__arrow
+    background url(../assets/dropdown_arrow.png) no-repeat 2px 45%
+    width 21px
+    height 25px
+    overflow hidden
+    cursor pointer
+    position absolute
+    top 0
+    right 0
+
+.dropdown-list
+  border solid $borderColor
+  border-width 0 1px 1px
+  border-radius 0 0 2px 2px
+  box-shadow 0 1px 3px rgba(0, 0, 0, .1)
+  background $backgroundColor
+  position absolute
+  left -1px
+  right -1px
+  display none
+  max-height 300px
+  overflow auto
+  &--open
+    display block
+
+  &__item
+    padding 10px
+    overflow hidden
+    border-top 1px solid $borderColor
+    display block
+    &--active
+      background $activeColor
+    &--empty
+      color $emptyTextColor
+
+  &__image
+    width 36px
+    height 36px
+    margin-right 20px
+    margin-left 0
+    border-radius 50%
+    float left
+
+  &__name
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    font-weight 700
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+    color $nameColor
+
+.dropdown-selected
+
+  &__item
+    float left
+    white-space nowrap
+    margin-right 3px
+    margin-bottom 3px
+    background $tabColor
+    border-radius 2px
+    padding 4px 30px 4px 5px
+    display block
+    color $backgroundColor
+    position relative
+
+
+  &__single
+    position absolute
+    background $backgroundColor
+    right 20px
+    padding-left 5px
+    left 0
+    padding-right 25px
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    .dropdown--open &
+      display none
+
+    .dropdown-selected__close
+      top 2px
+      &:before, &:after
+        background-color $borderColor
+
+      &:hover
+        &:before, &:after
+          background-color #999999
+
+  &__close
+    position absolute
+    top 6px
+    right 5px
+    height 16px
+    width 16px
+    cursor pointer
+    &:before, &:after
+      position absolute
+      left 7px
+      content ' '
+      height 14px
+      width 2px
+      background-color $crossColor
+
+    &:hover
+      &:before, &:after
+        background-color $backgroundColor
+
+    &:before
+      transform rotate(45deg)
+
+    &:after
+      transform rotate(-45deg)
+
+.dropdown-selected-avatars
+  position absolute
+  left 370px
+  margin-top -1px
+
+.dropdown-selected-avatar
+  border-radius 45%
+  border 3px solid $backgroundColor
+  margin-left -15px
+  cursor pointer
+  &:first-child
+    margin-left 0
+
+

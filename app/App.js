@@ -1,39 +1,16 @@
+import Dropdown from './dropdown/Dropdown.js'
 import './App.styl';
 
-class Dropdown {
-  constructor(element = '#dropdown', userConfig) {
-    this._element = document.querySelector(element);
-    this._init()
-  }
+let API_URL = '/api.php';
+let people = window.PEOPLE;
 
-  _init() {
-    const inputBlock = `
-      <div class="dropdown">
-        <input class="dropdown__input" placeholder="Введите имя друга или id"/>
-        <div class="dropdown__arrow"></div>
-        <div class="dropdown-list">
-          <div class="dropdown-list__item">
-            <img class="dropdown-list__image" src="https://pp.userapi.com/c834201/v834201260/13d7da/3cuXqcdN2QE.jpg" />
-            <div class="dropdown-list__name">Алекс</div>
-          </div>
-           <div class="dropdown-list__item">
-            <img class="dropdown-list__image" src="https://pp.userapi.com/c834201/v834201260/13d7da/3cuXqcdN2QE.jpg" />
-            <div class="dropdown-list__name">Алекс</div>
-          </div>
-           <div class="dropdown-list__item">
-            <img class="dropdown-list__image" src="https://pp.userapi.com/c834201/v834201260/13d7da/3cuXqcdN2QE.jpg" />
-            <div class="dropdown-list__name">Алекс</div>
-          </div>
-        <div class="dropdown-list__item">
-            <img class="dropdown-list__image" src="https://pp.userapi.com/c834201/v834201260/13d7da/3cuXqcdN2QE.jpg" />
-            <div class="dropdown-list__name">Алекс</div>
-          </div>
-        </div>
-      </div>
-    `;
-    this._element.innerHTML = inputBlock;
-    // return list;
-  }
+if (process.env.NODE_ENV === 'development') {
+  people = require('./people.json');
+  API_URL = 'http://vkdropdown.loc/api.php';
 }
 
-new Dropdown();
+new Dropdown('#dropdown_single', people, { multiSelect: false, autocomplete: false, placeholder: 'Выберите из списка..', withApi: false });
+new Dropdown('#dropdown_multi', people, { multiSelect: true, autocomplete: false, placeholder: 'Выберите из списка..', withApi: false });
+new Dropdown('#dropdown_autocomplete', people, { withApi: false });
+new Dropdown('#dropdown_noavatar', people, { withApi: false, noAvatar: true });
+new Dropdown('#dropdown_server', people, { withApi: true, apiUrl: API_URL });

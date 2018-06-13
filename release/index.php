@@ -1,0 +1,57 @@
+<?php
+ $people = json_encode(json_decode(file_get_contents(__DIR__.'/assets/people.json')));
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <title>VK test task</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h2 class="h1">VK тестовое задание</h2>
+    </div>
+    <div class="dropdown-block">
+      <h2 class="h2">Сингл селект</h2>
+      <div id="dropdown_single"></div>
+    </div>
+    <div class="dropdown-block">
+      <h2 class="h2">Мультиселект</h2>
+      <div id="dropdown_multi"></div>
+    </div>
+    <div class="dropdown-block">
+      <h2 class="h2">Автокомплит</h2>
+      <div id="dropdown_autocomplete"></div>
+    </div>
+    <div class="dropdown-block">
+      <h2 class="h2">Без аватарки</h2>
+      <div id="dropdown_noavatar"></div>
+    </div>
+    <div class="dropdown-block">
+      <h2 class="h2">С запросом домена с сервера</h2>
+      <div id="dropdown_server"></div>
+    </div>
+    <div class="footer">
+      <h2 class="h2">Имена - домены</h2>
+      <div class="domain-line">Александр Кержаков - <strong>akerzhakov_11</strong></div>
+      <div class="domain-line">Павел Воля - <strong>realvolya</strong></div>
+      <div class="domain-line">Семен Слепаков - <strong>idsemenslepakov</strong></div>
+      <div class="domain-line">Жерар Депардье - <strong>depard48</strong></div>
+      <div class="domain-line">Вера Брежнева - <strong>vb</strong></div>
+      <div class="domain-line">Евгений Плющенко - <strong>evgeniplushenko</strong></div>
+      <div class="domain-line">Дима Билан - <strong>bilandima_official</strong></div>
+      <div class="domain-line">Сергей Шнуров - <strong>shnur</strong></div>
+      <div class="domain-line">Павел Дуров - <strong>pdurov</strong></div>
+      <div class="domain-line">Сергей Лазарев - <strong>sergeylazarev</strong></div>
+      <div class="domain-line">Александр Бон - <strong>shponksbon</strong></div>
+    </div>
+  </div>
+  <script>
+	  var PEOPLE = JSON.parse('<?= $people ?>');
+  </script>
+  <script src="/js/bundle.js"></script>
+</body>
+</html>
